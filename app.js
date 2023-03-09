@@ -40,6 +40,32 @@ class Fruit {
     ctx.fillStyle = "yellow";
     ctx.fillRect(this.x, this.y, unit, unit);
   }
+
+  generateANewFruit() {
+    let overlapping = false; // 果实是否与蛇的身体重叠的状态
+    let newFruitLocationX;
+    let newFruitLocationY;
+
+    function isFruitOverlopSnake(fruitNewX, fruitNewY) {
+      for (let i = 0; i < snake.length; i++) {
+        if (fruitNewX === snake[0].x && fruitNewY === snake[0].y) {
+          overlapping = true;
+          return;
+        } else {
+          overlapping = false;
+        }
+      }
+    }
+
+    do {
+      newFruitLocationX = Math.floor(Math.random() * column) * unit;
+      newFruitLocationY = Math.floor(Math.random() * row) * unit;
+      isFruitOverlopSnake(newFruitLocationX, newFruitLocationY);
+    } while (overlapping);
+
+    this.x = newFruitLocationX;
+    this.y = newFruitLocationY;
+  }
 }
 
 let myFruit = new Fruit();
@@ -121,6 +147,7 @@ function drawSnake() {
   };
 
   if (snake[0].x === myFruit.x && snake[0].y === myFruit.y) {
+    myFruit.generateANewFruit();
   } else {
     snake.pop();
   }
