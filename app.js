@@ -30,6 +30,20 @@ snake[3] = {
   y: 0,
 };
 
+class Fruit {
+  constructor() {
+    this.x = Math.floor(Math.random() * column) * unit;
+    this.y = Math.floor(Math.random() * row) * unit;
+  }
+
+  drawFruit() {
+    ctx.fillStyle = "yellow";
+    ctx.fillRect(this.x, this.y, unit, unit);
+  }
+}
+
+let myFruit = new Fruit();
+
 window.addEventListener("keydown", changeDiedction);
 
 let snakeMovingDirection = "right";
@@ -50,6 +64,8 @@ function drawSnake() {
   // 每次画图之前重置背景和坐标
   ctx.fillStyle = "black";
   ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+  myFruit.drawFruit();
 
   // 开始画图
   for (let i = 0; i < snake.length; i++) {
