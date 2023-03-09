@@ -61,6 +61,23 @@ function drawSnake() {
     }
     // 外框颜色
     ctx.strokeStyle = "white";
+
+    if (snake[i].x >= canvas.width) {
+      snake[i].x = 0;
+    }
+
+    if (snake[i].x < 0) {
+      snake[i].x = canvas.width - unit;
+    }
+
+    if (snake[i].y >= canvas.height) {
+      snake[i].y = 0;
+    }
+
+    if (snake[i].y < 0) {
+      snake[i].y = canvas.width - unit;
+    }
+
     ctx.fillRect(snake[i].x, snake[i].y, unit, unit);
     // 画出外框的颜色
     ctx.strokeRect(snake[i].x, snake[i].y, unit, unit);
