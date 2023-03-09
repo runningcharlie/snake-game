@@ -35,14 +35,14 @@ window.addEventListener("keydown", changeDiedction);
 let snakeMovingDirection = "right";
 
 function changeDiedction(e) {
-  if (e.key === "ArrowLeft") {
-    console.log("左");
-  } else if (e.key === "ArrowRight") {
-    console.log("右");
-  } else if (e.key === "ArrowUp") {
-    console.log("上");
-  } else if (e.key === "ArrowDown") {
-    console.log("下");
+  if (e.key === "ArrowLeft" && snakeMovingDirection !== "right") {
+    snakeMovingDirection = "left";
+  } else if (e.key === "ArrowRight" && snakeMovingDirection !== "left") {
+    snakeMovingDirection = "right";
+  } else if (e.key === "ArrowUp" && snakeMovingDirection !== "down") {
+    snakeMovingDirection = "up";
+  } else if (e.key === "ArrowDown" && snakeMovingDirection !== "up") {
+    snakeMovingDirection = "down";
   }
 }
 
