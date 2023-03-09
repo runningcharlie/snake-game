@@ -119,7 +119,12 @@ function drawSnake() {
     x: snakeBodyCoordinateX,
     y: snakeBodyCoordinateY,
   };
-  snake.pop();
+
+  if (snake[0].x === myFruit.x && snake[0].y === myFruit.y) {
+  } else {
+    snake.pop();
+  }
+
   snake.unshift(newSnakeHead);
 }
 
