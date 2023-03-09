@@ -30,10 +30,16 @@ snake[3] = {
   y: 0,
 };
 
-// 使用数据和画板（drawing context）画出蛇的形状
 for (let i = 0; i < snake.length; i++) {
-  // 填充颜色
-  ctx.fillStyle = "lightblue";
-  // 画一个矩形，参数为 x y width height
+  // 辨认出蛇的头
+  if (i === 0) {
+    ctx.fillStyle = "lightgreen";
+  } else {
+    ctx.fillStyle = "lightblue";
+  }
+  // 外框颜色
+  ctx.strokeStyle = "white";
   ctx.fillRect(snake[i].x, snake[i].y, unit, unit);
+  // 画出外框的颜色
+  ctx.strokeRect(snake[i].x, snake[i].y, unit, unit);
 }
