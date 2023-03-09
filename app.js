@@ -10,25 +10,27 @@ const column = canvas.width / unit; // 320 / 20 = 16
 // 使用一个对象数组储存蛇身体的坐标
 let snake = [];
 
-snake[0] = {
-  x: 80,
-  y: 0,
-};
+function createSnake() {
+  snake[0] = {
+    x: 80,
+    y: 0,
+  };
 
-snake[1] = {
-  x: 60,
-  y: 0,
-};
+  snake[1] = {
+    x: 60,
+    y: 0,
+  };
 
-snake[2] = {
-  x: 40,
-  y: 0,
-};
+  snake[2] = {
+    x: 40,
+    y: 0,
+  };
 
-snake[3] = {
-  x: 20,
-  y: 0,
-};
+  snake[3] = {
+    x: 20,
+    y: 0,
+  };
+}
 
 class Fruit {
   constructor() {
@@ -67,6 +69,8 @@ class Fruit {
     this.y = newFruitLocationY;
   }
 }
+
+createSnake();
 
 let myFruit = new Fruit();
 
