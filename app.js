@@ -91,7 +91,18 @@ function changeDiedction(e) {
 }
 
 function drawSnake() {
-  // 每次画图之前重置背景和坐标
+  // 每次画图之前要做的事情
+
+  // 蛇头没有碰到蛇身
+
+  for (let i = 1; i < snake.length; i++) {
+    if (snake[i].x == snake[0].x && snake[i].y === snake[0].y) {
+      clearInterval(snakeGame);
+      alert("游戏结束");
+    }
+  }
+
+  //重置背景和坐标
   ctx.fillStyle = "black";
   ctx.fillRect(0, 0, canvas.width, canvas.height);
 
