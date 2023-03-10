@@ -88,6 +88,8 @@ function changeDiedction(e) {
   } else if (e.key === "ArrowDown" && snakeMovingDirection !== "up") {
     snakeMovingDirection = "down";
   }
+
+  window.removeEventListener("keydown", changeDiedction);
 }
 
 function drawSnake() {
@@ -168,6 +170,7 @@ function drawSnake() {
   }
 
   snake.unshift(newSnakeHead);
+  window.addEventListener("keydown", changeDiedction);
 }
 
 let snakeGame = setInterval(drawSnake, 100);
