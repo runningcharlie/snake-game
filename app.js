@@ -92,8 +92,12 @@ function changeDiedction(e) {
   window.removeEventListener("keydown", changeDiedction);
 }
 
+let bestScore;
+loadHighestScore();
 let score = 0;
+
 document.getElementById("myScore").innerHTML = "游戏分数： " + score;
+document.getElementById("myScore2").innerHTML = "最高分数： " + bestScore;
 
 function drawSnake() {
   // 每次画图之前要做的事情
@@ -170,7 +174,9 @@ function drawSnake() {
   if (snake[0].x === myFruit.x && snake[0].y === myFruit.y) {
     myFruit.generateANewFruit();
     score++;
+    setHeightScore(score);
     document.getElementById("myScore").innerHTML = "游戏分数： " + score;
+    document.getElementById("myScore2").innerHTML = "最高分数： " + bestScore;
   } else {
     snake.pop();
   }
@@ -180,3 +186,18 @@ function drawSnake() {
 }
 
 let snakeGame = setInterval(drawSnake, 100);
+
+function loadHighestScore() {
+  if (localStorage.getItem("bestScore") === null) {
+    bestScore = 0;
+  } else {
+    bestScore = Number(localStorage.getItem("bestScore"));
+  }
+}
+
+function setHeightScore() {
+  if (score > bestScore) {
+    localStorage.setItem("bestScore", score);
+    bestScore = score;
+  }
+}
