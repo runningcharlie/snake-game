@@ -92,6 +92,9 @@ function changeDiedction(e) {
   window.removeEventListener("keydown", changeDiedction);
 }
 
+let score = 0;
+document.getElementById("myScore").innerHTML = "游戏分数： " + score;
+
 function drawSnake() {
   // 每次画图之前要做的事情
 
@@ -163,8 +166,11 @@ function drawSnake() {
     y: snakeBodyCoordinateY,
   };
 
+  // 确认蛇是否有吃到果实
   if (snake[0].x === myFruit.x && snake[0].y === myFruit.y) {
     myFruit.generateANewFruit();
+    score++;
+    document.getElementById("myScore").innerHTML = "游戏分数： " + score;
   } else {
     snake.pop();
   }
